@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using Blazored.Toast.Services;
 
 namespace OidcClientDemoApplication
 {
@@ -36,6 +37,7 @@ namespace OidcClientDemoApplication
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
         }
 
@@ -43,7 +45,7 @@ namespace OidcClientDemoApplication
         {
             // Prevent WS-Federation claim names being written to tokens
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-            
+
             services.AddAuthentication(options => {
                 
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -107,6 +109,7 @@ namespace OidcClientDemoApplication
 
             services.AddAuthorization();
             services.AddRazorPages();
+            services.AddServerSideBlazor(); // Gain access to blazor syntax
 
             // Add this app's types to dependency injection
             services.AddSingleton<TokenClient>();
