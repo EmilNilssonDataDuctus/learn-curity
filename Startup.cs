@@ -13,7 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
-using Blazored.Toast.Services;
 
 namespace OidcClientDemoApplication
 {
@@ -37,7 +36,7 @@ namespace OidcClientDemoApplication
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();
-                endpoints.MapBlazorHub();
+                endpoints.MapBlazorHub(); 
             });
         }
 

@@ -1,0 +1,18 @@
+﻿@page "/protected"
+@inject ProtectedService ProtectedPageService
+
+<!-- Needed so that POSTs send an anti-forgery token -->
+<!-- addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers -->
+
+<h1>Protected View</h1>
+
+<h3>
+    <p>Welcome: @Username</p>
+    <p>Current Access Token: @AccessToken</p>
+    <p>Current Refresh Token: @RefreshToken</p>
+
+        <form method="post">
+            <p><button value="RefreshToken" asp-page-handler="RefreshToken">Refresh Token</button></p>
+            <p><button value="Logout" asp-page-handler="Logout">Logout</button></p>
+        </form>
+</h3>
